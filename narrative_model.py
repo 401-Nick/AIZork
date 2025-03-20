@@ -1,3 +1,4 @@
+#narrative_model.py
 from openai import OpenAI
 from typing import List, Dict
 import logging
@@ -6,9 +7,9 @@ import os
 
 load_dotenv()
 
-logger = logging.getLogger(__name__)
-
 OPENAI_MODEL = os.getenv("OPENAI_MODEL")
+
+logger = logging.getLogger(__name__)
 
 class MainNarrativeModel:
     def __init__(self, api_key: str, system_prompt: str):
@@ -20,6 +21,7 @@ class MainNarrativeModel:
         """Generate a narrative based on user input, game state, and history."""
         # Limit history to the last 20 entries to manage token limits
         recent_history = history[-20:]
+        # ADD A METER TO ACTIVELY TRACK THE GAME'S CONTEXT SIZE
         messages = [{"role": "system", "content": self.system_prompt}] + recent_history
 
         try:
@@ -27,7 +29,7 @@ class MainNarrativeModel:
                 model=OPENAI_MODEL,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=300
+                max_tokens=1000
             )
             return response.choices[0].message.content
         except Exception as e:

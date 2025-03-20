@@ -1,3 +1,4 @@
+#game_engine.py
 import tkinter as tk
 from typing import List, Optional, Dict
 from game_state import GameState
@@ -45,7 +46,7 @@ class GameEngine:
         self.gui.display(narrative)
         self.history.append({"role": "assistant", "content": narrative})
 
-        updates, error_message = self.state_update_model.analyze_narrative(user_input, narrative)
+        updates, error_message = self.state_update_model.analyze_narrative(user_input, narrative, self.game_state)
         if error_message:
             self.gui.display(f"Error: {error_message}")
         else:
