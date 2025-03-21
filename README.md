@@ -1,7 +1,7 @@
 # AIZork - AI-Powered Text Adventure Game
 
 ## Description
-A modern text adventure game with dynamic AI-generated narratives using OpenAI's API and Tkinter GUI
+A modern text game engine with dynamic AI-generated narratives using OpenAI's API and Tkinter GUI
 
 ## Features
 - 🧠 GPT-powered story generation
@@ -28,6 +28,11 @@ pip install -r requirements.txt
 ```env
 OPENAI_API_KEY=your_api_key_here
 OPENAI_MODEL=gpt-4o-mini
+```
+2. To customize the story, edit the following variables in main.py:
+```python
+SYSTEM_PROMPT_NARRATIVE = 'You are the narrator of a fantasy text-based adventure game...'
+INITIAL_MESSAGE = 'You find yourself in a castle...'
 ```
 
 ## Usage
